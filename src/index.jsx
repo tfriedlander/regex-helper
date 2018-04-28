@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createRootDiv } from './utils/dom'
+import App from './App'
 
 const root = createRootDiv()
 
 ReactDOM.render(
-  <h1>Hello</h1>,
+  <App />,
   root
 )
