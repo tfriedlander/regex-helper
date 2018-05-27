@@ -1,4 +1,4 @@
-/* global document */
+/* global document window */
 /**
  * @module utils/dom.js
  *
@@ -76,7 +76,45 @@ function createRootDiv(attributes = {}, docObj = doc) {
   return createAndAdd(attrs, docObj)
 }
 
+/**
+ * Returns the position of the cursor for an element.
+ * This is intended to be used within a contenteditable element
+ * @param {Object} element - the DOM object to retrieve the caret position from
+ * @return {number} index within the element on where it is
+ */
+function getCaretPosition(element) {
+  const isIE = !!(typeof document.selection !== 'undefined' && document.selection.type !== 'Control')
+  const other = !!(typeof window.getSelection !== 'undefined')
+  if (other) {
+    const range = window.getSelection().getRangeAt(0)
+    const preCaretRange = range.cloneRange()
+    preCaretRange.selectNodeContents(element)
+    preCaretRange.setEnd(range.endContainer, range.endOffset)
+    return preCaretRange.toString().length
+  }
+  if (isIE) {
+    const textRange = document.selection.createRange
+    const preCaretTextRange = document.body.createTextRange()
+    preCaretTextRange.moveToElementText(element)
+    preCaretTextRange.setEndPoint("EndToEnd", textRange)
+    return preCaretTextRange.text.length
+  }
+  return 0
+}
+
+  /*
+function setCaretPosition({ lineNumberelement) {
+  const range = document.createRange()
+  const selection = window.getSelection()
+  range.setStart(element.childNodes[2], 5)
+  range.collapse(true)
+  sel.removeAllRanges()
+  sel.addRange(range)
+}
+*/
+
 export {
+  getCaretPosition,
   setAttributes,
   createElement,
   addElement,
