@@ -1,6 +1,9 @@
 const COLORS = ['#C00', '#0C0', '#00C', '#CC0', '#0CC']
 const STARTING_COLOR_INDEX = -1
 
+//TODO: change so that the colors for a group are associated with one another
+// example: match 1 with group 1, 2, 3, should have the same colors. red, pink, blood red, orange, etc... and the next match should be a different color such as green, sea green, teal, etc
+
 /**
  * Generates a thunk used to get the next color to be used
  * @param {number} [startingIndex=0] - index to start generating colors from

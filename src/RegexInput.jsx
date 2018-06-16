@@ -55,9 +55,13 @@ class RegexInput extends React.Component {
   render() {
     const { text = '', regex, flags } = this.state
     const strRegex = `${regex}`
-    console.log('rendering RegexInput')
+    const styles = {
+      width: '80%',
+      float: 'left',
+      display: 'inline-block',
+    }
     return (
-      <div>
+      <div style={styles}>
         /<input type="text" onChange={ this.handleRegExpChange } value={ text } />/
         <input type="text" onChange={this.handleFlagChange} value={flags} />
         <p>Regex: {strRegex}</p>

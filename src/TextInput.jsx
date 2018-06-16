@@ -57,8 +57,13 @@ class TextInput extends React.Component {
     const { text, html, } = this.state
     const { matches } = this.props
     const innerHTML = { __html: html.replace(/[\n\r]/g, '<br />') }
+    const styles = {
+      width: '80%',
+      float: 'left',
+      display: 'inline-block',
+    }
     return (
-      <div>
+      <div style={styles}>
         <h3>Set input here</h3>
         <div
           ref={this.myRef}
