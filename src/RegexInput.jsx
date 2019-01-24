@@ -1,4 +1,8 @@
 import React from 'react'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
 
 class RegexInput extends React.Component {
   constructor(props) {
@@ -54,17 +58,28 @@ class RegexInput extends React.Component {
 
   render() {
     const { text = '', regex, flags } = this.state
-    const strRegex = `${regex}`
+    const strRegex = `${regex || 'N/A'}`
     const styles = {
       width: '80%',
       float: 'left',
-      display: 'inline-block',
+      display: 'flex',
     }
     return (
       <div style={styles}>
-        /<input type="text" onChange={ this.handleRegExpChange } value={ text } />/
-        <input type="text" onChange={this.handleFlagChange} value={flags} />
-        <p>Regex: {strRegex}</p>
+        <div style={{ padding: 20 }}>
+          <TextField type="text" placeholder="Regular Expression" onChange={ this.handleRegExpChange } value={ text } />
+          <br />
+          <TextField type="text" placeholder="Regex Flags" onChange={this.handleFlagChange} value={flags} />
+          <br />
+        </div>
+        <div style={{ padding: 20 }}>
+          <Card>
+            <CardContent>
+              <Typography color="textSecondary" gutterBottom>Regex used</Typography>
+              <Typography variant="h5" component="h2">{strRegex}</Typography>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     )
   }

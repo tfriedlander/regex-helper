@@ -3,6 +3,7 @@ import { getMatches } from './utils/matches'
 import RegexInput from './RegexInput'
 import TextInput from './TextInput'
 import MatchOutput from './MatchOutput'
+import Typography from '@material-ui/core/Typography'
 
 class App extends React.Component {
 
@@ -51,7 +52,7 @@ class App extends React.Component {
     const { matches } = this.state
     return (
       <div>
-        <h2>Regex Helper</h2>
+        <Typography variant="h2" gutterBottom>REGEX Helper</Typography>
         <div> {/* make this a flex box that stays up top for desktop and mobile */}
           <RegexInput handleRegexInput={this.handleRegexInput} />
         </div>

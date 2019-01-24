@@ -1,4 +1,5 @@
 import React from 'react'
+import Typography from '@material-ui/core/Typography'
 import { colorizeText as colorizeMatchedText } from './utils/colorize'
 
 
@@ -64,15 +65,17 @@ class TextInput extends React.Component {
     }
     return (
       <div style={styles}>
-        <h3>Set input here</h3>
-        <div
-          ref={this.myRef}
-          contentEditable="true"
-          onInput={ this.handleChange }
-          suppressContentEditableWarning="true"
-          dangerouslySetInnerHTML={innerHTML}
-        >
-        </div>
+        <Typography variant="h5">Set Input Below</Typography>
+        <Typography variant="body1">
+          <div
+            ref={this.myRef}
+            contentEditable="true"
+            onInput={ this.handleChange }
+            suppressContentEditableWarning="true"
+            dangerouslySetInnerHTML={innerHTML}
+          >
+          </div>
+        </Typography>
       </div>
     )
   }

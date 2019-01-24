@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const distDir = path.resolve(__dirname, 'dist')
 
 const isProd = process.env.NODE_ENV === 'production'
-
 module.exports = {
   mode: isProd ? 'production' : 'development',
   entry: './src/index.jsx',
@@ -39,7 +38,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Bootstrap'
+      title: 'Regex Helper',
+      template: 'src/template.html',
     })
   ]
 }
